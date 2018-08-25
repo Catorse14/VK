@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Лайки@1x.png",
+      "filename" : "Like1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Лайки@2x.png",
+      "filename" : "Like2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Лайки@3x.png",
+      "filename" : "Like3.png",
       "scale" : "3x"
     }
   ],

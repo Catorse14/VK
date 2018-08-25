@@ -7,89 +7,84 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewsController: UITableViewController {
-
+    var newsList: [News] = []
+    var imageSize: (width: Int, height: Int) = (0, 0)
+    let instets: CGFloat = 10.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func loadData() {
+        let service = Service()
+        service.getNewsFeed() { (news, error) in
+            // TODO: обработка ошибок
+            if let error = error {
+                print(error)
+                return
+            }
+            // получили массив новостей
+            if let news = news {
+                self.newsList = news
+                // обновить tableView
+                self.tableView?.reloadData()
+            }
+        }
     }
-
+    
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return newsList.count
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        //Получаем новость
+        let newsItem = newsList[indexPath.row]
+        if newsItem.type == "post" {
+     let cell = tableView.dequeueReusableCell(withIdentifier: "newsCellIdentifier", for: indexPath) as! NewsCell
+            tableView.rowHeight = newsItem.cellHeight
+            let avatar = URL(string: newsItem.avatar)
+            cell.avatarImage.kf.setImage(with: avatar)
+            cell.setAuthor(text: newsItem.author)
+            cell.setTextNews(text: newsItem.textNews)
+            cell.setStatistics(news: newsItem)
+            cell.attachments(news: newsItem, cell: cell, indexPath: indexPath, tableView: tableView)
+            if newsItem.cellHeight == 0.0 {
+                newsItem.cellHeight = cell.getCellHeight()
+            }
+     return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "newsPhotoCellIdentifier", for: indexPath) as! NewsPhotoCell
+            tableView.rowHeight = newsItem.cellHeight
+            let avatar = URL(string: newsItem.avatar)
+            let image = URL(string: newsItem.newsImage)
+            
+            cell.avatarPhoto.kf.setImage(with: avatar)
+            cell.setAuthor(text: newsItem.author)
+            cell.setStatistics(news: newsItem)
+            
+            if let photo = newsItem.photos {
+                imageSize = (photo.width, photo.height)
+                cell.imagePhoto.kf.setImage(with: image)
+            } else {
+                imageSize = (0, 0)
+            }
+            
+            if newsItem.cellHeight == 0.0 {
+                newsItem.cellHeight = cell.getCellHeight()
+            }
+            return cell
+        }
+     }
 }

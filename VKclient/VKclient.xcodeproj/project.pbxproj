@@ -18,6 +18,11 @@
 		1137C18B2130817B00CC72AA /* GroupListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C18A2130817B00CC72AA /* GroupListController.swift */; };
 		1137C18D2130819300CC72AA /* GroupListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C18C2130819300CC72AA /* GroupListCell.swift */; };
 		114BB9522131A34800D16774 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9512131A34800D16774 /* News.swift */; };
+		114BB9542131B6C900D16774 /* PhotoNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9532131B6C900D16774 /* PhotoNews.swift */; };
+		114BB9572131B7B400D16774 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9562131B7B400D16774 /* Service.swift */; };
+		114BB9592131C99700D16774 /* NewsPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9582131C99700D16774 /* NewsPhotoCell.swift */; };
+		114BB95B2131D85E00D16774 /* GetCacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB95A2131D85E00D16774 /* GetCacheImage.swift */; };
+		114BB95D2131D87300D16774 /* SetImageToRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB95C2131D87300D16774 /* SetImageToRow.swift */; };
 		119380DF213017530046E80B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119380DE213017530046E80B /* AppDelegate.swift */; };
 		119380E1213017530046E80B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119380E0213017530046E80B /* LoginViewController.swift */; };
 		119380E4213017530046E80B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 119380E2213017530046E80B /* Main.storyboard */; };
@@ -38,6 +43,11 @@
 		1137C18A2130817B00CC72AA /* GroupListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListController.swift; sourceTree = "<group>"; };
 		1137C18C2130819300CC72AA /* GroupListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListCell.swift; sourceTree = "<group>"; };
 		114BB9512131A34800D16774 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		114BB9532131B6C900D16774 /* PhotoNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNews.swift; sourceTree = "<group>"; };
+		114BB9562131B7B400D16774 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		114BB9582131C99700D16774 /* NewsPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPhotoCell.swift; sourceTree = "<group>"; };
+		114BB95A2131D85E00D16774 /* GetCacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCacheImage.swift; sourceTree = "<group>"; };
+		114BB95C2131D87300D16774 /* SetImageToRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetImageToRow.swift; sourceTree = "<group>"; };
 		119380DB213017530046E80B /* VKclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		119380DE213017530046E80B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		119380E0213017530046E80B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +77,8 @@
 			children = (
 				1137C17621307EEA00CC72AA /* NewsController.swift */,
 				1137C17821307F2200CC72AA /* NewsCell.swift */,
+				114BB9582131C99700D16774 /* NewsPhotoCell.swift */,
+				114BB9532131B6C900D16774 /* PhotoNews.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -115,6 +127,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		114BB9552131B78A00D16774 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				114BB9562131B7B400D16774 /* Service.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		119380D2213017530046E80B = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +156,7 @@
 		119380DD213017530046E80B /* VKclient */ = {
 			isa = PBXGroup;
 			children = (
+				114BB9552131B78A00D16774 /* Services */,
 				114BB9502131A31400D16774 /* Models */,
 				1137C17521307EC000CC72AA /* News */,
 				1137C1892130813700CC72AA /* GroupList */,
@@ -144,6 +165,8 @@
 				1137C17A21307F5200CC72AA /* MyFriends */,
 				119380DE213017530046E80B /* AppDelegate.swift */,
 				119380E0213017530046E80B /* LoginViewController.swift */,
+				114BB95A2131D85E00D16774 /* GetCacheImage.swift */,
+				114BB95C2131D87300D16774 /* SetImageToRow.swift */,
 				119380E2213017530046E80B /* Main.storyboard */,
 				119380E5213017550046E80B /* Assets.xcassets */,
 				119380E7213017550046E80B /* LaunchScreen.storyboard */,
@@ -262,13 +285,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				114BB95D2131D87300D16774 /* SetImageToRow.swift in Sources */,
+				114BB95B2131D85E00D16774 /* GetCacheImage.swift in Sources */,
 				1137C17721307EEA00CC72AA /* NewsController.swift in Sources */,
 				1137C18B2130817B00CC72AA /* GroupListController.swift in Sources */,
+				114BB9572131B7B400D16774 /* Service.swift in Sources */,
 				1137C1812130803900CC72AA /* FriendsPhotoController.swift in Sources */,
 				1137C17E21307FAB00CC72AA /* MyFriendsCell.swift in Sources */,
+				114BB9592131C99700D16774 /* NewsPhotoCell.swift in Sources */,
 				119380E1213017530046E80B /* LoginViewController.swift in Sources */,
 				1137C186213080F200CC72AA /* MyGroupsController.swift in Sources */,
 				1137C17C21307F7700CC72AA /* MyFriendsController.swift in Sources */,
+				114BB9542131B6C900D16774 /* PhotoNews.swift in Sources */,
 				1137C18D2130819300CC72AA /* GroupListCell.swift in Sources */,
 				1137C17921307F2200CC72AA /* NewsCell.swift in Sources */,
 				1137C1882130811400CC72AA /* MyGroupsCell.swift in Sources */,
