@@ -10,22 +10,27 @@ import UIKit
 import WebKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //  LoginViewController будет являтся navigationDelegate (протокол)
         webView.navigationDelegate = self
+        
+        //  Вызваем метод создания строки
         if let request = vkAuthRequest() {
             webView.load(request)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
     
+    //  Создаем адрес, по которому переходим в Web View
     func vkAuthRequest() -> URLRequest? {
         var urlComponents = URLComponents()
         urlComponents.scheme = "http"
@@ -47,12 +52,16 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        
+        //  Проверяем, содержит ли строка /blank.html. После успешного логина переходим в redirect_uri
         guard let url = navigationResponse.response.url,
             url.path == "/blank.html",
             let fragment = url.fragment else {
                 decisionHandler(.allow)
                 return
         }
+        
+        //  Получаем token
         let params = fragment
             .components(separatedBy: "&")
             .map { $0.components(separatedBy: "=") }
@@ -64,11 +73,11 @@ extension LoginViewController: WKNavigationDelegate {
                 return dict
         }
         if let token = params["access_token"] {
-            // сохраняем token
+            
+            // Сохраняем token
             UserDefaults.standard.set(token, forKey: "token")
             performSegue(withIdentifier: "myTabSegue", sender: nil)
         }
         decisionHandler(.cancel)
     }
 }
-
