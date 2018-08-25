@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Группы М.png",
+      "filename" : "Группы@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Группы С.png",
+      "filename" : "Группы@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Группы Б.png",
+      "filename" : "Группы@3x.png",
       "scale" : "3x"
     }
   ],
