@@ -58,7 +58,10 @@ class NewsController: UITableViewController {
             cell.avatarImage.kf.setImage(with: avatar)
             cell.setAuthor(text: newsItem.author)
             cell.setTextNews(text: newsItem.textNews)
-            cell.setStatistics(news: newsItem)
+            cell.setLike(text: newsItem.like)
+            cell.setComment(text: newsItem.comments)
+            cell.setRepost(text: newsItem.repost)
+            cell.setView(text: newsItem.view)
             cell.attachments(news: newsItem, cell: cell, indexPath: indexPath, tableView: tableView)
             if newsItem.cellHeight == 0.0 {
                 newsItem.cellHeight = cell.getCellHeight()
