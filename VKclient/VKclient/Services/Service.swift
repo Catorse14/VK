@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 let api: String = "https://api.vk.com/method/"
 
@@ -24,6 +25,7 @@ struct VkPaths {
 class Service: Operation {
     let api = VkPaths()
     var parameters: Dictionary<String, Any> = [:]
+    let realm = try! Realm()
     
     init(token: String? = nil) {
         
@@ -49,7 +51,7 @@ class Service: Operation {
         
         DispatchQueue.global().async {
             Alamofire.request(self.api.newsFeed, parameters: mergedParams).responseJSON(queue:DispatchQueue.global()) { (response) in
-                print(response)
+//                print(response)
                 if let error = response.error {
                     print(error)
                     DispatchQueue.main.async {
@@ -88,7 +90,52 @@ class Service: Operation {
             }
         }
     }
+    
+    // Получаем список друзей и сохраняем их в Realm
+    func getFriendList(completion: ((Error?) -> Void)?) {
+        let parameters = [
+            "fields": "photo_200_orig",
+            "name_case": "nom",
+            "order": "name",
+            "v": "5.80"
+        ]
+        let mergedParams = self.parameters.merged(another: parameters)
+        
+        DispatchQueue.global().async {
+            Alamofire.request(self.api.getFriends, parameters: mergedParams).responseJSON { (response) in
+                print(response)
+                if let error = response.error {
+                    completion?(error)
+                    return
+                }
+                if let value = response.data, let json = try? JSON(data: value) {
+                    let friends = json["response"]["items"].arrayValue.map { Friends(json: $0) }
+                    self.saveToRealm(items: friends)
+                    completion?(nil)
+                }
+                return
+            }
+        }
+    }
+    
+    // Функция с дженериком, которая сохраняет данные в Realm
+    func saveToRealm<T: Object>(items: [T]) {
+        let realm = try! Realm()
+        do {
+            try realm.write {
+                // Получаем объекты типа Т
+                let itemsToRemove = realm.objects(T.self)
+                // Удаляем старые объекты
+                realm.delete(itemsToRemove)
+                // Добавляем новые объекты
+                realm.add(items)
+            }
+        } catch {
+            print(error)
+        }
+    }
 }
+
 
 extension Dictionary {
     func merged(another: [Key: Value]) -> Dictionary {

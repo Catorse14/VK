@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class FriendsPhotoController: UICollectionViewController {
-
+    var friend: Friends?
     override func viewDidLoad() {
         super.viewDidLoad()
 

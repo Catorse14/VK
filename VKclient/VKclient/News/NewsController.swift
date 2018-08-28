@@ -12,7 +12,6 @@ import Kingfisher
 class NewsController: UITableViewController {
     var newsList: [News] = []
     var imageSize: (width: Int, height: Int) = (0, 0)
-    let instets: CGFloat = 10.0
     
     override func viewDidLoad() {
         super.viewDidLoad()

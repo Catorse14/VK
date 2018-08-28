@@ -1,4 +1,4 @@
-module Pods_VKclient {
+framework module Pods_VKclient {
   umbrella header "Pods-VKclient-umbrella.h"
 
   export *

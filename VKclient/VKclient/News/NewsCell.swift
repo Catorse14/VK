@@ -9,7 +9,7 @@
 import UIKit
 
 class NewsCell: UITableViewCell {
-
+    
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var iconRepost: UIImageView!
     @IBOutlet weak var iconComment: UIImageView!
@@ -84,7 +84,7 @@ class NewsCell: UITableViewCell {
         view.text = text
         viewCount()
     }
-
+    
     
     func getCellHeight() -> CGFloat {
         var height: CGFloat = 0.0
@@ -164,7 +164,7 @@ class NewsCell: UITableViewCell {
         let iconOrigin = CGPoint(x: bounds.width * 0.05, y: 3 * instets + iconSideLinght + 3 * instets + textNews.frame.size.height + 3 * instets + imageNews.frame.size.height + 3 * instets)
         iconLike.frame = CGRect(origin: iconOrigin, size: iconSize)
     }
-
+    
     // Установка размеров и позиции количества Like
     func likeCount() {
         // получаем размер текста
@@ -279,17 +279,14 @@ class NewsCell: UITableViewCell {
         viewIcon()
         viewCount()
     }
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
-  
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-
+        
     }
-
 }

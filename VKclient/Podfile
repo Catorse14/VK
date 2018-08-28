@@ -2,7 +2,9 @@
 # platform :ios, '9.0'
 
 target 'VKclient' do
+    use_frameworks!
 pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'Kingfisher'
+pod 'RealmSwift'
 end
