@@ -17,6 +17,7 @@
 		1137C1882130811400CC72AA /* MyGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C1872130811400CC72AA /* MyGroupsCell.swift */; };
 		1137C18B2130817B00CC72AA /* GroupListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C18A2130817B00CC72AA /* GroupListController.swift */; };
 		1137C18D2130819300CC72AA /* GroupListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C18C2130819300CC72AA /* GroupListCell.swift */; };
+		114471D92136DAC900C69335 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114471D82136DAC900C69335 /* Photo.swift */; };
 		114BB9522131A34800D16774 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9512131A34800D16774 /* News.swift */; };
 		114BB9542131B6C900D16774 /* PhotoNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9532131B6C900D16774 /* PhotoNews.swift */; };
 		114BB9572131B7B400D16774 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9562131B7B400D16774 /* Service.swift */; };
@@ -43,6 +44,7 @@
 		1137C1872130811400CC72AA /* MyGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsCell.swift; sourceTree = "<group>"; };
 		1137C18A2130817B00CC72AA /* GroupListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListController.swift; sourceTree = "<group>"; };
 		1137C18C2130819300CC72AA /* GroupListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListCell.swift; sourceTree = "<group>"; };
+		114471D82136DAC900C69335 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		114BB9512131A34800D16774 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		114BB9532131B6C900D16774 /* PhotoNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNews.swift; sourceTree = "<group>"; };
 		114BB9562131B7B400D16774 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				114BB9512131A34800D16774 /* News.swift */,
 				1152F1302135826700EF80A7 /* Friends.swift */,
+				114471D82136DAC900C69335 /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				114BB95D2131D87300D16774 /* SetImageToRow.swift in Sources */,
 				114BB95B2131D85E00D16774 /* GetCacheImage.swift in Sources */,
 				1137C17721307EEA00CC72AA /* NewsController.swift in Sources */,
+				114471D92136DAC900C69335 /* Photo.swift in Sources */,
 				1137C18B2130817B00CC72AA /* GroupListController.swift in Sources */,
 				114BB9572131B7B400D16774 /* Service.swift in Sources */,
 				1137C1812130803900CC72AA /* FriendsPhotoController.swift in Sources */,

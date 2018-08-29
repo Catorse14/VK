@@ -19,8 +19,6 @@ class MyFriendsCell: UITableViewCell {
     let instets: CGFloat = 10.0
     var imageSize: (width: Int, height: Int) = (0, 0)
     let iconSideLinght: CGFloat = 62
-    let statisticIcon: CGFloat = 25
-    
     
     let queue: OperationQueue = {
         let queue = OperationQueue()

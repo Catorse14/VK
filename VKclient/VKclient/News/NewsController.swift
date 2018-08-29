@@ -18,6 +18,7 @@ class NewsController: UITableViewController {
         loadData()
     }
     
+    // Получаем новости
     func loadData() {
         let service = Service()
         service.getNewsFeed() { (news, error) in
@@ -46,12 +47,12 @@ class NewsController: UITableViewController {
         return newsList.count
     }
     
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //Получаем новость
         let newsItem = newsList[indexPath.row]
         if newsItem.type == "post" {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "newsCellIdentifier", for: indexPath) as! NewsCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "newsCellIdentifier", for: indexPath) as! NewsCell
             tableView.rowHeight = newsItem.cellHeight
             let avatar = URL(string: newsItem.avatar)
             cell.avatarImage.kf.setImage(with: avatar)
@@ -65,7 +66,7 @@ class NewsController: UITableViewController {
             if newsItem.cellHeight == 0.0 {
                 newsItem.cellHeight = cell.getCellHeight()
             }
-     return cell
+            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "newsPhotoCellIdentifier", for: indexPath) as! NewsPhotoCell
             tableView.rowHeight = newsItem.cellHeight
@@ -88,5 +89,5 @@ class NewsController: UITableViewController {
             }
             return cell
         }
-     }
+    }
 }

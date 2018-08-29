@@ -12,12 +12,9 @@ class GroupListController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Задаем цвет кнопки назад
+        self.navigationController?.navigationBar.tintColor = UIColor.white
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {

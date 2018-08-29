@@ -51,7 +51,7 @@ class Service: Operation {
         
         DispatchQueue.global().async {
             Alamofire.request(self.api.newsFeed, parameters: mergedParams).responseJSON(queue:DispatchQueue.global()) { (response) in
-//                print(response)
+                //                print(response)
                 if let error = response.error {
                     print(error)
                     DispatchQueue.main.async {
@@ -103,7 +103,7 @@ class Service: Operation {
         
         DispatchQueue.global().async {
             Alamofire.request(self.api.getFriends, parameters: mergedParams).responseJSON { (response) in
-                print(response)
+                //                print(response)
                 if let error = response.error {
                     completion?(error)
                     return
@@ -134,8 +134,38 @@ class Service: Operation {
             print(error)
         }
     }
+    
+    // Получаем фото друга
+    func getFriendPhotos(ownerId: Int, completion: (([Photo]?, Error?) -> Void)?) {
+        let parameters = [
+            "owner_id": ownerId,
+            "v": "5.80",
+            "extended": 1
+            ] as [String : Any]
+        
+        let mergedParams = self.parameters.merged(another: parameters)
+        
+        DispatchQueue.global().async {
+            Alamofire.request(self.api.getPhotos, parameters: mergedParams).responseJSON(queue:DispatchQueue.global()) { (response) in
+                print (response)
+                if let error = response.error {
+                    completion?(nil, error)
+                    return
+                }
+                
+                if let value = response.data {
+                    if let json = try? JSON(data: value) {
+                        let photos = json["response"]["items"].arrayValue.map { Photo(json: $0["sizes"]) }
+                        DispatchQueue.main.async {
+                            completion?(photos, nil)
+                        }
+                    }
+                    return
+                }
+            }
+        }
+    }
 }
-
 
 extension Dictionary {
     func merged(another: [Key: Value]) -> Dictionary {
