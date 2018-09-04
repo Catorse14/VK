@@ -75,7 +75,10 @@ class NewsController: UITableViewController {
             
             cell.avatarPhoto.kf.setImage(with: avatar)
             cell.setAuthor(text: newsItem.author)
-            cell.setStatistics(news: newsItem)
+            cell.setLike(text: newsItem.like)
+            cell.setComment(text: newsItem.comments)
+            cell.setRepost(text: newsItem.repost)
+            cell.setView(text: newsItem.view)
             
             if let photo = newsItem.photos {
                 imageSize = (photo.width, photo.height)

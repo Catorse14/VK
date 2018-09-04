@@ -15,6 +15,12 @@ class FriendsPhotoController: UICollectionViewController {
     var friend: Friends?
     var photoList: [Photo] = []
     
+    let queue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.qualityOfService = .userInteractive
+        return queue
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Задаем цвет кнопки назад
@@ -67,6 +73,18 @@ class FriendsPhotoController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "friendsPhoto", for: indexPath) as! FriendsPhotoCell
         let photo = URL(string: photoList[indexPath.row].photo)
         cell.photoFriend.kf.setImage(with: photo)
+        
+        let getCacheImage = GetCacheImage(url: photoList[indexPath.row].photo)
+        getCacheImage.completionBlock = {
+            OperationQueue.main.addOperation {
+                cell.photoFriend.image = getCacheImage.outputImage
+            }
+        }
+        
+        let setImageToRow = SetPhotoToRow(cell: cell, indexPath: indexPath, tableView: collectionView)
+        setImageToRow.addDependency(getCacheImage)
+        queue.addOperation(getCacheImage)
+        OperationQueue.main.addOperation(setImageToRow)
         
         return cell
     }

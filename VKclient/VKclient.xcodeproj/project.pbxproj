@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1121EE1D213D64F600AC82DE /* SetPhotoToRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121EE1C213D64F600AC82DE /* SetPhotoToRow.swift */; };
+		1121EE1F213D6D1F00AC82DE /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121EE1E213D6D1F00AC82DE /* Groups.swift */; };
 		1137C17721307EEA00CC72AA /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C17621307EEA00CC72AA /* NewsController.swift */; };
 		1137C17921307F2200CC72AA /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C17821307F2200CC72AA /* NewsCell.swift */; };
 		1137C17C21307F7700CC72AA /* MyFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C17B21307F7700CC72AA /* MyFriendsController.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1121EE1C213D64F600AC82DE /* SetPhotoToRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPhotoToRow.swift; sourceTree = "<group>"; };
+		1121EE1E213D6D1F00AC82DE /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		1137C17621307EEA00CC72AA /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		1137C17821307F2200CC72AA /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		1137C17B21307F7700CC72AA /* MyFriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				114BB9512131A34800D16774 /* News.swift */,
 				1152F1302135826700EF80A7 /* Friends.swift */,
 				114471D82136DAC900C69335 /* Photo.swift */,
+				1121EE1E213D6D1F00AC82DE /* Groups.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				119380E0213017530046E80B /* LoginViewController.swift */,
 				114BB95A2131D85E00D16774 /* GetCacheImage.swift */,
 				114BB95C2131D87300D16774 /* SetImageToRow.swift */,
+				1121EE1C213D64F600AC82DE /* SetPhotoToRow.swift */,
 				119380E2213017530046E80B /* Main.storyboard */,
 				119380E5213017550046E80B /* Assets.xcassets */,
 				119380E7213017550046E80B /* LaunchScreen.storyboard */,
@@ -327,9 +333,11 @@
 				114BB9572131B7B400D16774 /* Service.swift in Sources */,
 				1137C1812130803900CC72AA /* FriendsPhotoController.swift in Sources */,
 				1137C17E21307FAB00CC72AA /* MyFriendsCell.swift in Sources */,
+				1121EE1D213D64F600AC82DE /* SetPhotoToRow.swift in Sources */,
 				114BB9592131C99700D16774 /* NewsPhotoCell.swift in Sources */,
 				119380E1213017530046E80B /* LoginViewController.swift in Sources */,
 				1137C186213080F200CC72AA /* MyGroupsController.swift in Sources */,
+				1121EE1F213D6D1F00AC82DE /* Groups.swift in Sources */,
 				1137C17C21307F7700CC72AA /* MyFriendsController.swift in Sources */,
 				114BB9542131B6C900D16774 /* PhotoNews.swift in Sources */,
 				1137C18D2130819300CC72AA /* GroupListCell.swift in Sources */,

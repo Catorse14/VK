@@ -20,12 +20,6 @@ class MyFriendsCell: UITableViewCell {
     var imageSize: (width: Int, height: Int) = (0, 0)
     let iconSideLinght: CGFloat = 62
     
-    let queue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.qualityOfService = .userInteractive
-        return queue
-    }()
-    
     func getCellHeight() -> CGFloat {
         var height: CGFloat = 0.0
         height = 2 * instets + iconSideLinght

@@ -30,6 +30,7 @@ class LoginViewController: UIViewController {
         
     }
     
+    
     //  Создаем адрес, по которому переходим в Web View
     func vkAuthRequest() -> URLRequest? {
         var urlComponents = URLComponents()

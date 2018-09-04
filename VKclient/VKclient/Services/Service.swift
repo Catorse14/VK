@@ -41,7 +41,7 @@ class Service: Operation {
     }
     
     // Получаем ленту новостей
-    func getNewsFeed (comletion: (([News]?, Error?) -> Void)?) {
+    func getNewsFeed (completion: (([News]?, Error?) -> Void)?) {
         let parameters = [
             "filters": "post,photo",
             "return_banned": "0",
@@ -55,7 +55,7 @@ class Service: Operation {
                 if let error = response.error {
                     print(error)
                     DispatchQueue.main.async {
-                        comletion?(nil, error)
+                        completion?(nil, error)
                     }
                     return
                 }
@@ -82,7 +82,7 @@ class Service: Operation {
                             }
                         }
                         DispatchQueue.main.async {
-                            comletion?(news, nil)
+                            completion?(news, nil)
                         }
                     }
                     return
@@ -147,7 +147,7 @@ class Service: Operation {
         
         DispatchQueue.global().async {
             Alamofire.request(self.api.getPhotos, parameters: mergedParams).responseJSON(queue:DispatchQueue.global()) { (response) in
-                print (response)
+                //                print (response)
                 if let error = response.error {
                     completion?(nil, error)
                     return
@@ -158,6 +158,36 @@ class Service: Operation {
                         let photos = json["response"]["items"].arrayValue.map { Photo(json: $0["sizes"]) }
                         DispatchQueue.main.async {
                             completion?(photos, nil)
+                        }
+                    }
+                    return
+                }
+            }
+        }
+    }
+    
+    //    Получаем список групп
+    func getGroupsList(completion: (([Groups]?,Error?) -> Void)?) {
+        let parameters = [
+            "fields": "members_count",
+            "extended": "1",
+            "v": "5.80"
+        ]
+        
+        let mergedParams = self.parameters.merged(another: parameters)
+        
+        DispatchQueue.global().async {
+            Alamofire.request(self.api.getGroups, parameters: mergedParams).responseJSON(queue:DispatchQueue.global()) { (response) in
+                if let error = response.error {
+                    completion?(nil, error)
+                    return
+                }
+                
+                if let value = response.data {
+                    if let json = try? JSON(data: value) {
+                        let groups = json["response"]["items"].arrayValue.map { Groups(json: $0) }
+                        DispatchQueue.main.async {
+                            completion?(groups, nil)
                         }
                     }
                     return

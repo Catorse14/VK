@@ -9,7 +9,9 @@
 import UIKit
 
 class GroupListController: UITableViewController {
-
+//var groups: [Groups] = []
+    var myGroupsList: [Groups] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Задаем цвет кнопки назад
