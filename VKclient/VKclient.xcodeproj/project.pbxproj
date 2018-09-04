@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1121EE1D213D64F600AC82DE /* SetPhotoToRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121EE1C213D64F600AC82DE /* SetPhotoToRow.swift */; };
+		1121EE1F213D6D1F00AC82DE /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1121EE1E213D6D1F00AC82DE /* Groups.swift */; };
 		1137C17721307EEA00CC72AA /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C17621307EEA00CC72AA /* NewsController.swift */; };
 		1137C17921307F2200CC72AA /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C17821307F2200CC72AA /* NewsCell.swift */; };
 		1137C17C21307F7700CC72AA /* MyFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C17B21307F7700CC72AA /* MyFriendsController.swift */; };
@@ -17,21 +19,25 @@
 		1137C1882130811400CC72AA /* MyGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C1872130811400CC72AA /* MyGroupsCell.swift */; };
 		1137C18B2130817B00CC72AA /* GroupListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C18A2130817B00CC72AA /* GroupListController.swift */; };
 		1137C18D2130819300CC72AA /* GroupListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1137C18C2130819300CC72AA /* GroupListCell.swift */; };
+		114471D92136DAC900C69335 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114471D82136DAC900C69335 /* Photo.swift */; };
 		114BB9522131A34800D16774 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9512131A34800D16774 /* News.swift */; };
 		114BB9542131B6C900D16774 /* PhotoNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9532131B6C900D16774 /* PhotoNews.swift */; };
 		114BB9572131B7B400D16774 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9562131B7B400D16774 /* Service.swift */; };
 		114BB9592131C99700D16774 /* NewsPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB9582131C99700D16774 /* NewsPhotoCell.swift */; };
 		114BB95B2131D85E00D16774 /* GetCacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB95A2131D85E00D16774 /* GetCacheImage.swift */; };
 		114BB95D2131D87300D16774 /* SetImageToRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114BB95C2131D87300D16774 /* SetImageToRow.swift */; };
+		1152F1312135826700EF80A7 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1152F1302135826700EF80A7 /* Friends.swift */; };
 		119380DF213017530046E80B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119380DE213017530046E80B /* AppDelegate.swift */; };
 		119380E1213017530046E80B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119380E0213017530046E80B /* LoginViewController.swift */; };
 		119380E4213017530046E80B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 119380E2213017530046E80B /* Main.storyboard */; };
 		119380E6213017550046E80B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 119380E5213017550046E80B /* Assets.xcassets */; };
 		119380E9213017550046E80B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 119380E7213017550046E80B /* LaunchScreen.storyboard */; };
-		F1C4DA9387CBFACB66066E68 /* libPods-VKclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DF17FE2B7F8B1DC353567E /* libPods-VKclient.a */; };
+		F1B6E26B553ED4EDA9357159 /* Pods_VKclient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69CC0EB6C27AC5BE1BDF5F31 /* Pods_VKclient.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1121EE1C213D64F600AC82DE /* SetPhotoToRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPhotoToRow.swift; sourceTree = "<group>"; };
+		1121EE1E213D6D1F00AC82DE /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		1137C17621307EEA00CC72AA /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		1137C17821307F2200CC72AA /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		1137C17B21307F7700CC72AA /* MyFriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsController.swift; sourceTree = "<group>"; };
@@ -42,12 +48,14 @@
 		1137C1872130811400CC72AA /* MyGroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsCell.swift; sourceTree = "<group>"; };
 		1137C18A2130817B00CC72AA /* GroupListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListController.swift; sourceTree = "<group>"; };
 		1137C18C2130819300CC72AA /* GroupListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListCell.swift; sourceTree = "<group>"; };
+		114471D82136DAC900C69335 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		114BB9512131A34800D16774 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		114BB9532131B6C900D16774 /* PhotoNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNews.swift; sourceTree = "<group>"; };
 		114BB9562131B7B400D16774 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		114BB9582131C99700D16774 /* NewsPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPhotoCell.swift; sourceTree = "<group>"; };
 		114BB95A2131D85E00D16774 /* GetCacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCacheImage.swift; sourceTree = "<group>"; };
 		114BB95C2131D87300D16774 /* SetImageToRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetImageToRow.swift; sourceTree = "<group>"; };
+		1152F1302135826700EF80A7 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		119380DB213017530046E80B /* VKclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		119380DE213017530046E80B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		119380E0213017530046E80B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -55,7 +63,7 @@
 		119380E5213017550046E80B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		119380E8213017550046E80B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		119380EA213017560046E80B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35DF17FE2B7F8B1DC353567E /* libPods-VKclient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VKclient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69CC0EB6C27AC5BE1BDF5F31 /* Pods_VKclient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKclient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7760077E21725F5A6A1FBB3D /* Pods-VKclient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKclient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VKclient/Pods-VKclient.debug.xcconfig"; sourceTree = "<group>"; };
 		801CEA7C8C32F1BEE3CC3419 /* Pods-VKclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-VKclient/Pods-VKclient.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1C4DA9387CBFACB66066E68 /* libPods-VKclient.a in Frameworks */,
+				F1B6E26B553ED4EDA9357159 /* Pods_VKclient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				114BB9512131A34800D16774 /* News.swift */,
+				1152F1302135826700EF80A7 /* Friends.swift */,
+				114471D82136DAC900C69335 /* Photo.swift */,
+				1121EE1E213D6D1F00AC82DE /* Groups.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,14 +170,15 @@
 				114BB9552131B78A00D16774 /* Services */,
 				114BB9502131A31400D16774 /* Models */,
 				1137C17521307EC000CC72AA /* News */,
+				1137C17A21307F5200CC72AA /* MyFriends */,
+				1137C17F21307FCC00CC72AA /* FriendsPhoto */,
 				1137C1892130813700CC72AA /* GroupList */,
 				1137C184213080B300CC72AA /* MyGroups */,
-				1137C17F21307FCC00CC72AA /* FriendsPhoto */,
-				1137C17A21307F5200CC72AA /* MyFriends */,
 				119380DE213017530046E80B /* AppDelegate.swift */,
 				119380E0213017530046E80B /* LoginViewController.swift */,
 				114BB95A2131D85E00D16774 /* GetCacheImage.swift */,
 				114BB95C2131D87300D16774 /* SetImageToRow.swift */,
+				1121EE1C213D64F600AC82DE /* SetPhotoToRow.swift */,
 				119380E2213017530046E80B /* Main.storyboard */,
 				119380E5213017550046E80B /* Assets.xcassets */,
 				119380E7213017550046E80B /* LaunchScreen.storyboard */,
@@ -178,7 +190,7 @@
 		84E7D6D80D31B39C1FC7A84B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				35DF17FE2B7F8B1DC353567E /* libPods-VKclient.a */,
+				69CC0EB6C27AC5BE1BDF5F31 /* Pods_VKclient.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -203,6 +215,7 @@
 				119380D7213017530046E80B /* Sources */,
 				119380D8213017530046E80B /* Frameworks */,
 				119380D9213017530046E80B /* Resources */,
+				1C7F874272E0FC907B865517 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -260,6 +273,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1C7F874272E0FC907B865517 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VKclient/Pods-VKclient-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VKclient/Pods-VKclient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7B285215DA5C71E506CEBB45 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,16 +324,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1152F1312135826700EF80A7 /* Friends.swift in Sources */,
 				114BB95D2131D87300D16774 /* SetImageToRow.swift in Sources */,
 				114BB95B2131D85E00D16774 /* GetCacheImage.swift in Sources */,
 				1137C17721307EEA00CC72AA /* NewsController.swift in Sources */,
+				114471D92136DAC900C69335 /* Photo.swift in Sources */,
 				1137C18B2130817B00CC72AA /* GroupListController.swift in Sources */,
 				114BB9572131B7B400D16774 /* Service.swift in Sources */,
 				1137C1812130803900CC72AA /* FriendsPhotoController.swift in Sources */,
 				1137C17E21307FAB00CC72AA /* MyFriendsCell.swift in Sources */,
+				1121EE1D213D64F600AC82DE /* SetPhotoToRow.swift in Sources */,
 				114BB9592131C99700D16774 /* NewsPhotoCell.swift in Sources */,
 				119380E1213017530046E80B /* LoginViewController.swift in Sources */,
 				1137C186213080F200CC72AA /* MyGroupsController.swift in Sources */,
+				1121EE1F213D6D1F00AC82DE /* Groups.swift in Sources */,
 				1137C17C21307F7700CC72AA /* MyFriendsController.swift in Sources */,
 				114BB9542131B6C900D16774 /* PhotoNews.swift in Sources */,
 				1137C18D2130819300CC72AA /* GroupListCell.swift in Sources */,

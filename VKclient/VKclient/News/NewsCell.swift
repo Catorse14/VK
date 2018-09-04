@@ -9,12 +9,33 @@
 import UIKit
 
 class NewsCell: UITableViewCell {
-
-    @IBOutlet weak var iconView: UIImageView!
-    @IBOutlet weak var iconRepost: UIImageView!
-    @IBOutlet weak var iconComment: UIImageView!
-    @IBOutlet weak var iconLike: UIImageView!
-    @IBOutlet weak var avatarImage: UIImageView!
+    
+    
+    @IBOutlet weak var iconView: UIImageView!{
+        didSet {
+            iconView.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    @IBOutlet weak var iconRepost: UIImageView!{
+        didSet {
+            iconRepost.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    @IBOutlet weak var iconComment: UIImageView!{
+        didSet {
+            iconComment.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    @IBOutlet weak var iconLike: UIImageView!{
+        didSet {
+            iconLike.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    @IBOutlet weak var avatarImage: UIImageView!{
+        didSet {
+            avatarImage.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
     @IBOutlet weak var authorNews: UILabel!{
         didSet {
             authorNews.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +48,11 @@ class NewsCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var imageNews: UIImageView!
+    @IBOutlet weak var imageNews: UIImageView!{
+        didSet {
+            imageNews.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
     @IBOutlet weak var like: UILabel!{
         didSet {
             like.translatesAutoresizingMaskIntoConstraints = false
@@ -53,6 +78,7 @@ class NewsCell: UITableViewCell {
     var imageSize: (width: Int, height: Int) = (0, 0)
     let iconSideLinght: CGFloat = 62
     let statisticIcon: CGFloat = 25
+    
     
     let queue: OperationQueue = {
         let queue = OperationQueue()
@@ -84,36 +110,46 @@ class NewsCell: UITableViewCell {
         view.text = text
         viewCount()
     }
-
+    
     
     func getCellHeight() -> CGFloat {
         var height: CGFloat = 0.0
-        height = 3 * instets + iconSideLinght + 3 * instets + 3 * instets + textNews.frame.size.height + like.frame.size.height + 6 * instets
-        if imageSize != (0, 0){
-            height += imageNews.frame.size.height + 3 * instets
+        height += instets + iconSideLinght + instets + textNews.frame.size.height + instets + imageNews.frame.size.height + instets + like.frame.size.height + 6 * instets
+        
+        if imageNews.frame.size.height == 0 {
+            height -= 6 * instets + imageNews.frame.size.height
+        }
+        if textNews.frame.size.height == 0 {
+            height -= instets + textNews.frame.size.height
         }
         return height
     }
     
     func getLabelSize(text: String, font: UIFont) -> CGSize {
-        // максимальная ширина текста
-        let maxWidth = bounds.width - instets * 2
-        // размеры блока (макс. ширина и макс. возможная высота)
-        let textBlock = CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude)
-        // прямоугольник под текст
-        let rect = text.boundingRect(with: textBlock, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
-        // ширина и высота блока
-        let width = Double(rect.size.width)
-        let height = Double(rect.size.height)
-        // размер, округленный до большего целого
-        let size = CGSize(width: ceil(width), height: ceil(height))
+        var size:CGSize
         
+        // Если строка с текстом поста пустая, то по ширине и высоте блока текста присваиваем 0
+        if text.isEmpty {
+            size = CGSize(width: 0, height: 0)
+        } else {
+            // максимальная ширина текста
+            let maxWidth = bounds.width - instets * 2
+            // размеры блока (макс. ширина и макс. возможная высота)
+            let textBlock = CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude)
+            // прямоугольник под текст
+            let rect = text.boundingRect(with: textBlock, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+            // ширина и высота блока
+            let width = Double(rect.size.width)
+            let height = Double(rect.size.height)
+            // размер, округленный до большего целого
+            size = CGSize(width: ceil(width), height: ceil(height))
+        }
         return size
     }
     
     func avatar () {
         let iconSize = CGSize(width: iconSideLinght, height: iconSideLinght)
-        let iconOrigin = CGPoint(x: bounds.midX * 0.05, y: 3 * instets)
+        let iconOrigin = CGPoint(x: bounds.midX * 0.05, y: instets)
         avatarImage.frame = CGRect(origin: iconOrigin, size: iconSize)
         
         // закругленные углы
@@ -125,8 +161,8 @@ class NewsCell: UITableViewCell {
     // Установка размеров и позиции автора новости
     func author () {
         let author = getLabelSize(text: authorNews.text!, font: authorNews.font)
-        let authorX = bounds.width * 0.05 + 62 + bounds.width * 0.05
-        let authorY = instets * 5
+        let authorX = bounds.width * 0.05 + iconSideLinght + bounds.width * 0.05
+        let authorY = instets * 3
         let textOrigin = CGPoint(x: authorX, y: authorY)
         authorNews.frame = CGRect(origin: textOrigin, size: author)
     }
@@ -136,7 +172,7 @@ class NewsCell: UITableViewCell {
         // получаем размер текста
         let text = getLabelSize(text: textNews.text!, font: textNews.font)
         // рассчитываем координату по оси Y
-        let textY = 3 * instets + iconSideLinght + 3 * instets
+        let textY = instets + iconSideLinght + instets
         // получаем координаты верхней левой точки
         let textOrigin = CGPoint(x: instets, y: textY)
         // получаем фрейм и установливаем его UILabel
@@ -150,7 +186,16 @@ class NewsCell: UITableViewCell {
             return
         }
         let ratio = Double(imageSize.height) / Double(imageSize.width)
-        let y = 3 * instets + iconSideLinght + 3 * instets + textNews.frame.size.height + 3 * instets
+        var y:CGFloat = 0
+        
+        // Если приходит пустая строка текста новсти в Label, то убираем лишние отступы
+        if textNews.text!.isEmpty {
+            y = instets + iconSideLinght + instets
+        } else {
+            
+            // Иначе добавляем отступы
+            y = instets + iconSideLinght + instets + textNews.frame.size.height + instets
+        }
         let width = Double(bounds.width - instets * 2)
         let height = width * ratio
         let size = CGSize(width: width, height: ceil(height))
@@ -161,18 +206,35 @@ class NewsCell: UITableViewCell {
     // Установка размеров и позиции изображения Like
     func likeIcon () {
         let iconSize = CGSize(width: statisticIcon, height: statisticIcon)
-        let iconOrigin = CGPoint(x: bounds.width * 0.05, y: 3 * instets + iconSideLinght + 3 * instets + textNews.frame.size.height + 3 * instets + imageNews.frame.size.height + 3 * instets)
+        var iconOrigin:CGPoint
+        
+        // Если приходит пустая строка текста новсти в Label, то убираем лишние отступы
+        if textNews.text!.isEmpty {
+            iconOrigin = CGPoint(x: bounds.width * 0.05, y: instets + iconSideLinght + instets + imageNews.frame.size.height + instets)
+        } else {
+            
+            // Иначе добавляем отступы
+            iconOrigin = CGPoint(x: bounds.width * 0.05, y: instets + iconSideLinght + instets + textNews.frame.size.height + instets + imageNews.frame.size.height + instets)
+        }
         iconLike.frame = CGRect(origin: iconOrigin, size: iconSize)
     }
-
+    
     // Установка размеров и позиции количества Like
     func likeCount() {
         // получаем размер текста
         let text = getLabelSize(text: like.text!, font: like.font)
         // рассчитываем координату по оси X
         let textX = bounds.width * 0.05 + 3 * instets
-        // рассчитываем координату по оси Y
-        let textY = 3 * instets + iconSideLinght + 3 * instets + textNews.frame.size.height + 3 * instets + imageNews.frame.size.height + 3 * instets
+        var textY:CGFloat
+        
+        // Если приходит пустая строка текста новсти в Label, то убираем лишние отступы
+        if textNews.text!.isEmpty {
+            textY = instets + iconSideLinght + instets + imageNews.frame.size.height + instets
+        } else {
+            
+            // Иначе добавляем отступы
+            textY = instets + iconSideLinght + instets + textNews.frame.size.height + instets + imageNews.frame.size.height + instets
+        }
         // получаем координаты верхней левой точки
         let textOrigin = CGPoint(x: textX, y: textY)
         // получаем фрейм и установливаем его UILabel
@@ -182,7 +244,16 @@ class NewsCell: UITableViewCell {
     // Установка размеров и позиции изображения Comment
     func commentIcon () {
         let iconSize = CGSize(width: statisticIcon, height: statisticIcon)
-        let iconOrigin = CGPoint(x: bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07, y: 3 * instets + iconSideLinght + 3 * instets + textNews.frame.size.height + 3 * instets + imageNews.frame.size.height + 3 * instets)
+        var iconOrigin:CGPoint
+        
+        // Если приходит пустая строка текста новсти в Label, то убираем лишние отступы
+        if textNews.text!.isEmpty {
+            iconOrigin = CGPoint(x: bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07, y: instets + iconSideLinght + instets + imageNews.frame.size.height + instets)
+        } else {
+            
+            // Иначе добавляем отступы
+            iconOrigin = CGPoint(x: bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07, y: instets + iconSideLinght + instets + textNews.frame.size.height + instets + imageNews.frame.size.height + instets)
+        }
         iconComment.frame = CGRect(origin: iconOrigin, size: iconSize)
     }
     
@@ -192,8 +263,16 @@ class NewsCell: UITableViewCell {
         let text = getLabelSize(text: comments.text!, font: comments.font)
         // рассчитываем координату по оси X
         let textX = bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07 + 3 * instets
-        // рассчитываем координату по оси Y
-        let textY = 3 * instets + iconSideLinght + 3 * instets + textNews.frame.size.height + 3 * instets + imageNews.frame.size.height + 3 * instets
+        var textY:CGFloat
+        
+        // Если приходит пустая строка текста новсти в Label, то убираем лишние отступы
+        if textNews.text!.isEmpty {
+            textY = instets + iconSideLinght + instets + imageNews.frame.size.height + instets
+        } else {
+            
+            // Иначе добавляем отступы
+            textY = instets + iconSideLinght + instets + textNews.frame.size.height + instets + imageNews.frame.size.height + instets
+        }
         // получаем координаты верхней левой точки
         let textOrigin = CGPoint(x: textX, y: textY)
         // получаем фрейм и установливаем его UILabel
@@ -203,7 +282,16 @@ class NewsCell: UITableViewCell {
     // Установка размеров и позиции изображения Repost
     func repostIcon() {
         let iconSize = CGSize(width: statisticIcon, height: statisticIcon)
-        let iconOrigin = CGPoint(x: bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07 + 3 * instets + bounds.width * 0.07, y: 3 * instets + iconSideLinght + 3 * instets + textNews.frame.size.height + 3 * instets + imageNews.frame.size.height + 3 * instets)
+        var iconOrigin:CGPoint
+        
+        // Если приходит пустая строка текста новсти в Label, то убираем лишние отступы
+        if textNews.text!.isEmpty {
+            iconOrigin = CGPoint(x: bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07 + 3 * instets + bounds.width * 0.07, y: instets + iconSideLinght + instets + imageNews.frame.size.height + instets)
+        } else {
+            
+            // Иначе добавляем отступы
+            iconOrigin = CGPoint(x: bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07 + 3 * instets + bounds.width * 0.07, y: instets + iconSideLinght + instets + textNews.frame.size.height + instets + imageNews.frame.size.height + instets)
+        }
         iconRepost.frame = CGRect(origin: iconOrigin, size: iconSize)
     }
     
@@ -213,8 +301,16 @@ class NewsCell: UITableViewCell {
         let text = getLabelSize(text: repost.text!, font: repost.font)
         // рассчитываем координату по оси X
         let textX = bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07 + 3 * instets + comments.frame.size.width + bounds.width * 0.07 + 3 * instets
-        // рассчитываем координату по оси Y
-        let textY = 3 * instets + iconSideLinght + 3 * instets + textNews.frame.size.height + 3 * instets + imageNews.frame.size.height + 3 * instets
+        var textY:CGFloat
+        
+        // Если приходит пустая строка текста новсти в Label, то убираем лишние отступы
+        if textNews.text!.isEmpty {
+            textY = instets + iconSideLinght + instets + imageNews.frame.size.height + instets
+        } else {
+            
+            // Иначе добавляем отступы
+            textY = instets + iconSideLinght + instets + textNews.frame.size.height + instets + imageNews.frame.size.height + instets
+        }
         // получаем координаты верхней левой точки
         let textOrigin = CGPoint(x: textX, y: textY)
         // получаем фрейм и установливаем его UILabel
@@ -224,7 +320,16 @@ class NewsCell: UITableViewCell {
     // Установка размеров и позиции изображения View
     func viewIcon() {
         let iconSize = CGSize(width: statisticIcon, height: statisticIcon)
-        let iconOrigin = CGPoint(x: bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07 + 3 * instets + comments.frame.size.width + bounds.width * 0.07 + 3 * instets + repost.frame.size.width + bounds.width * 0.07, y: 3 * instets + iconSideLinght + 3 * instets + textNews.frame.size.height + 3 * instets + imageNews.frame.size.height + 3 * instets)
+        var iconOrigin:CGPoint
+        
+        // Если приходит пустая строка текста новсти в Label, то убираем лишние отступы
+        if textNews.text!.isEmpty {
+            iconOrigin = CGPoint(x: bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07 + 3 * instets + comments.frame.size.width + bounds.width * 0.07 + 3 * instets + repost.frame.size.width + bounds.width * 0.07, y: instets + iconSideLinght + instets + imageNews.frame.size.height + instets)
+        } else {
+            
+            // Иначе добавляем отступы
+            iconOrigin = CGPoint(x: bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07 + 3 * instets + comments.frame.size.width + bounds.width * 0.07 + 3 * instets + repost.frame.size.width + bounds.width * 0.07, y: instets + iconSideLinght + instets + textNews.frame.size.height + instets + imageNews.frame.size.height + instets)
+        }
         iconView.frame = CGRect(origin: iconOrigin, size: iconSize)
     }
     
@@ -234,8 +339,16 @@ class NewsCell: UITableViewCell {
         let text = getLabelSize(text: view.text!, font: view.font)
         // рассчитываем координату по оси X
         let textX = bounds.width * 0.05 + 3 * instets + like.frame.size.width + bounds.width * 0.07 + 3 * instets + comments.frame.size.width + bounds.width * 0.07 + 3 * instets + repost.frame.size.width + bounds.width * 0.07 + 3 * instets
-        // рассчитываем координату по оси Y
-        let textY = 3 * instets + iconSideLinght + 3 * instets + textNews.frame.size.height + 3 * instets + imageNews.frame.size.height + 3 * instets
+        var textY:CGFloat
+        
+        // Если приходит пустая строка текста новсти в Label, то убираем лишние отступы
+        if textNews.text!.isEmpty {
+            textY = instets + iconSideLinght + instets + imageNews.frame.size.height + instets
+        } else {
+            
+            // Иначе добавляем отступы
+            textY = instets + iconSideLinght + instets + textNews.frame.size.height + instets + imageNews.frame.size.height + instets
+        }
         // получаем координаты верхней левой точки
         let textOrigin = CGPoint(x: textX, y: textY)
         // получаем фрейм и установливаем его UILabel
@@ -279,17 +392,14 @@ class NewsCell: UITableViewCell {
         viewIcon()
         viewCount()
     }
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
-  
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-
+        
     }
-
 }
